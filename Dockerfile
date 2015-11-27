@@ -1,9 +1,6 @@
 # Inherit from Heroku's python stack
 FROM heroku/python
 
-# Install numpy
-RUN /app/.heroku/python/bin/pip install numpy
-
 # Install OpenCV by https://github.com/jayrambhia/Install-OpenCV
 ENV DESTDIR /app/.heroku/opencv
 RUN mkdir -p $DESTDIR /tmp/opencv
