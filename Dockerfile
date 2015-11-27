@@ -1,6 +1,9 @@
 # Inherit from Heroku's python stack
 FROM heroku/python
 
+# Install numpy
+RUN /app/.heroku/python/bin/pip install numpy
+
 # Install OpenCV by https://github.com/jayrambhia/Install-OpenCV
 ENV DESTDIR /app/.heroku/opencv
 RUN mkdir -p $DESTDIR /tmp/opencv
@@ -14,4 +17,4 @@ RUN sed -i 's/make install/make DESTDIR=$DESTDIR install/' opencv_install.sh
 # Install
 RUN echo 'deb http://archive.ubuntu.com/ubuntu trusty multiverse' >> /etc/apt/sources.list
 RUN apt-get update
-RUN ./opencv_latest.sh
+RUN CMAKE_PREFIX_PATH=/app/.heroku/python ./opencv_latest.sh
