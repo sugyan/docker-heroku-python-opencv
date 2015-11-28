@@ -9,9 +9,9 @@ RUN git clone https://github.com/jayrambhia/Install-OpenCV
 WORKDIR Install-OpenCV/Ubuntu
 # Modify install scripts...
 RUN sed -i 's/sudo //g' *.sh
-RUN sed -i 's/BUILD_NEW_PYTHON_SUPPORT/BUILD_opencv_python2/' opencv_install.sh
+RUN sed -i 's/BUILD_NEW_PYTHON_SUPPORT=ON/BUILD_opencv_python2=ON -D PYTHON_INCLUDE_DIR=\/app\/.heroku\/python\/include\/python2.7/' opencv_install.sh
 RUN sed -i 's/make install/make DESTDIR=$DESTDIR install/' opencv_install.sh
 # Install
 RUN echo 'deb http://archive.ubuntu.com/ubuntu trusty multiverse' >> /etc/apt/sources.list
 RUN apt-get update
-RUN CMAKE_PREFIX_PATH=/app/.heroku/python ./opencv_latest.sh
+RUN ./opencv_latest.sh
