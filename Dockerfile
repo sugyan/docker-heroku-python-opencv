@@ -5,8 +5,7 @@ FROM heroku/python
 RUN mkdir -p /app/.heroku/opencv /tmp/opencv
 ADD Install-OpenCV /tmp/opencv
 WORKDIR /tmp/opencv/Ubuntu
-RUN echo 'deb http://archive.ubuntu.com/ubuntu trusty multiverse' >> /etc/apt/sources.list
-RUN apt-get update
+RUN echo 'deb http://archive.ubuntu.com/ubuntu trusty multiverse' >> /etc/apt/sources.list && apt-get update
 RUN ./opencv_latest.sh
 
 # Python environment

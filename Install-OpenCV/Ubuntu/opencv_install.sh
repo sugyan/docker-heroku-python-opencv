@@ -38,7 +38,7 @@ fi
 cd opencv-$version
 mkdir build
 cd build
-cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/app/.heroku/opencv -D BUILD_opencv_python2=ON -D WITH_V4L=ON -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D BUILD_EXAMPLES=ON -D WITH_OPENGL=ON -D PYTHON_INCLUDE_DIR=/app/.heroku/python/include/python2.7 -D WITH_1394=OFF -D WITH_GSTREAMER=OFF ..
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/app/.heroku/opencv -D BUILD_opencv_python2=ON -D WITH_V4L=ON -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D BUILD_EXAMPLES=ON -D WITH_OPENGL=ON -D PYTHON_INCLUDE_DIR=/app/.heroku/python/include/python2.7 -D WITH_1394=OFF -D WITH_GSTREAMER=OFF -D WITH_FFMPEG=OFF ..
 make -j 4
 make install
 sh -c 'echo "/app/.heroku/opencv/lib" > /etc/ld.so.conf.d/opencv.conf'
