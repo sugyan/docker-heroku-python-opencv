@@ -14,3 +14,4 @@ RUN echo 'export PYTHONPATH=${PYTHONPATH:-/app/.heroku/opencv/lib/python2.7/site
 ONBUILD WORKDIR /app/user
 ONBUILD ADD requirements.txt /app/user/
 ONBUILD RUN /app/.heroku/python/bin/pip install -r requirements.txt
+ONBUILD ADD . /app/user/
